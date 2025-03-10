@@ -1,0 +1,19 @@
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="title">Title:</label>
+    <input id="title" formControlName="title">
+    @if(form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)){<div>
+        @if(form.controls['title'].errors?.['required']){<small>Email is required.</small>}
+        @if(form.controls['title'].errors?.['title']){<small>Invalid email format.</small>}
+    </div>
+    }
+    <label for="description">Description:</label>
+    <input id="description" formControlName="description" type="description">
+    @if(form.controls['description'].invalid && (form.controls['description'].dirty || form.controls['description'].touched)){ <div>
+        @if(form.controls['description'].errors?.['required']){<small>Description is required.</small>}
+    </div>}
+    
+    <button type="submit" [disabled]="form.invalid">
+        Send
+    </button>
+</form>

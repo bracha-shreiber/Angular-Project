@@ -1,0 +1,38 @@
+<!-- <nav>
+    <a routerLink="" routerLinkActive="buttonactive">Home</a>
+    <a routerLink="login" routerLinkActive="buttonactive">SignIn</a>
+    @if(isLoggedIn){
+    <h1>------</h1>
+    <a routerLink="courses" routerLinkActive="buttonactive">Courses</a>
+    <a routerLink="lessons" routerLinkActive="buttonactive">Lessons</a>
+    }
+    
+</nav>
+<router-outlet></router-outlet> -->
+<!-- <nav>
+    
+    @if(isLoggedIn){
+        <a routerLink="courses" routerLinkActive="buttonactive">Courses</a>
+        <button (click)="signOut()">Sign Out</button>
+    }
+    @else {<a routerLink="" routerLinkActive="buttonactive">Home</a>
+    <a routerLink="login" routerLinkActive="buttonactive">SignIn</a>}
+</nav>
+<router-outlet></router-outlet>
+ -->
+ <nav>
+    <mat-toolbar color="primary">
+      
+      @if(isLoggedIn){
+            <a mat-button routerLink="courses" routerLinkActive="buttonactive">Courses</a>
+            <button mat-button (click)="signOut()">Sign Out</button>
+      }
+      @else {
+            <a mat-button routerLink="" routerLinkActive="buttonactive">Home</a>
+            <a mat-button routerLink="login" routerLinkActive="buttonactive">Sign In</a>
+      }
+  
+    </mat-toolbar>
+  </nav>
+  <router-outlet></router-outlet>
+  

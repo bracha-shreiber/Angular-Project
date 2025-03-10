@@ -1,0 +1,15 @@
+@if(userRole=="teacher"){
+<button (click)="addLesson()">Add Lesson</button>
+}
+<h2>Lessons</h2>
+@for(lesson of (lessons | async);track lesson.id){
+<div>
+    <h3>{{lesson.title}}</h3>
+    <p>{{lesson.content }}</p>
+
+    @if(userRole=="teacher"){
+    <button (click)="editLesson(lesson.id)">edit</button>
+    <button (click)="deleteLesson(lesson.id)">delete</button>
+    }
+</div>
+}
