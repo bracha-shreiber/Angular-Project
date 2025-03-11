@@ -103,8 +103,10 @@ export class LoginComponent implements OnInit {
     this.isRegister = !this.isRegister;
     if (this.isRegister) {
       this.form.addControl('name', this.fb.control('', Validators.required));
+      this.form.addControl('role',this.fb.control('',Validators.required));
     } else {
       this.form.removeControl('name');
+      this.form.removeControl('role');
     }
   }
 
@@ -112,12 +114,18 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       const user = this.createUser();
       if (this.isRegister) {
-        this.authService.register(user).subscribe(response => {
+        this.authService.register(user).subscribe((response:any) => {
+          if (typeof window !== 'undefined') {
+            sessionStorage.setItem('token', response.token);
+          }
           console.log('user registered: ', response),
           this.router.navigate(['/']); 
         }, error => console.error('register error: ', error));
       } else {
-        this.authService.login({ email: user.email, password: user.password }).subscribe(response => {
+        this.authService.login({ email: user.email, password: user.password }).subscribe((response:any) => {
+          if (typeof window !== 'undefined') {
+            sessionStorage.setItem('token', response.token);
+          }
           console.log('user logged in: ', response),
           this.router.navigate(['/']);
         }, error => console.error('login error: ', error));

@@ -25,7 +25,9 @@ export class AuthService {private baseUrl = 'http://localhost:3000/api/auth';
         this.userService.setUser(response);
         this.currentUser = response;
         this.loggedInSubject.next(true);
-        sessionStorage.setItem('token',response.token)
+        // if (typeof window !== 'undefined') {
+        //   sessionStorage.setItem('token', response.token);
+        // }
       }),catchError(error=>{
         console.error('Error registering user: ',error);
         throw error;
@@ -41,7 +43,9 @@ export class AuthService {private baseUrl = 'http://localhost:3000/api/auth';
             console.log(this.token);
             console.log(this.currentUser);
             this.loggedInSubject.next(true);
-            sessionStorage.setItem('token',res.token)
+            // if (typeof window !== 'undefined') {
+            //   sessionStorage.setItem('token', res.token);
+            // }
         }),
         catchError(error => {
             console.error('Error logging in user: ', error);
