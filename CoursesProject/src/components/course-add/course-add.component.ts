@@ -45,7 +45,9 @@ onSubmit() {
   }
   let courseId = +this.route.snapshot.paramMap.get('courseId')!;
   if(this.addOrUpdate){
-this.courseService.updateCourse(courseId,course);
+this.courseService.updateCourse(courseId,course).subscribe(
+  ()=>{this.courseService.getCourses()}
+);
 this.courseService.getCourses()
   }
   else{

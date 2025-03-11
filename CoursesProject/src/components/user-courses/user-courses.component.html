@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+    <button mat-button (click)="signOut()">Sign Out</button>
+    <button mat-button (click)="ToCourses()">Courses</button>
+    </mat-toolbar>
+<!-- @if(userRole=="teacher"){
+    <button (click)="addCourse()">Add Course</button>
+    } -->
+    <h2>My Courses</h2>
+    @for(course of myCourses;track course.id){
+    <div>
+        <h3>{{course.title}}</h3>
+        <p>{{course.description }}</p>
+    
+        @if(!isEnroll(course.id)){
+        <button (click)="showLessons(course.id)">Show Lessons</button>
+        }
+        <button (click)="showLessons(course.id)">Show Lessons</button>
+        @if(userRole=="teacher"){
+        <button (click)="editCourse(course.id)">edit</button>
+        <button (click)="deleteCourse(course.id)">delete</button>
+        }
+    </div>
+    }

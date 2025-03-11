@@ -5,11 +5,12 @@ import { Lesson } from '../../models/lessonType';
 import { Observable } from 'rxjs/internal/Observable';
 import { AuthService } from '../../service/auth.service';
 import { AsyncPipe } from '@angular/common';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-lessons',
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe,MatButtonModule,MatToolbarModule],
   templateUrl: './lessons.component.html',
   styleUrl: './lessons.component.css'
 })
@@ -54,5 +55,8 @@ export class LessonsComponent implements OnInit {
   }
   returnToCourses(){
     this.router.navigate(['courses'])
+  }
+  returnToMyCourses(){
+    this.router.navigate(['courses/myCourses'])
   }
 }

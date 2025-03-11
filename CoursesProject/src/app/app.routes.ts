@@ -6,11 +6,13 @@ import { CourseAddComponent } from '../components/course-add/course-add.componen
 import { LessonsComponent } from '../components/lessons/lessons.component';
 import { LessonAddComponent } from '../components/lesson-add/lesson-add.component';
 import { authGuardGuard } from '../guard/auth-guard.guard';
+import { UserCoursesComponent } from '../components/user-courses/user-courses.component';
 
 export const routes: Routes = [
     { path: "", component: MenuComponent },
     { path: "login", component: LoginComponent },
     { path: "courses", component: CoursesComponent },
+    {path:"courses/myCourses",component:UserCoursesComponent},
     { path: "courses/newCourse", component: CourseAddComponent },
     { path: "courses/:courseId/edit", component: CourseAddComponent },
     { path: "courses/:courseId/lessons", component: LessonsComponent, canActivate: [authGuardGuard] },

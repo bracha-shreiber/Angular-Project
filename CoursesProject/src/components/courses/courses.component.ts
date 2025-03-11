@@ -7,12 +7,13 @@ import { error } from 'console';
 import { AuthService } from '../../service/auth.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe,MatButtonModule,MatToolbarModule],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css'
 })
@@ -90,7 +91,9 @@ export class CoursesComponent implements OnInit {
   }
 
   deleteCourse(courseId: number) {
-    this.coursesService.deleteCourse(courseId);
+    this.coursesService.deleteCourse(courseId).subscribe(
+      ()=>{this.coursesService.getCourses()}
+    );
     this.coursesService.getCourses()
     this.coursesService.getCourses()
   }
@@ -110,6 +113,13 @@ export class CoursesComponent implements OnInit {
   }
   showLessons(courseId: number) {
     this.router.navigate([`/courses/${courseId}/lessons`])
+  }
+  signOut() {
+    this.authService.logout(); 
+    this.router.navigate(['/'])
+  }
+  ToMyCourses(){
+    this.router.navigate(['courses/myCourses'])
   }
 }
 

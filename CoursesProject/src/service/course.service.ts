@@ -130,7 +130,6 @@ export class CourseService {
   }
 
   addCourse(course: Partial<Course>): Observable<Course> {
-    debugger
     return this.http.post<Course>(`${baseUrl}/courses`, course).pipe(
       catchError(this.handleError)
     );

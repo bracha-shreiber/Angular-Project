@@ -1,7 +1,11 @@
-<button (click)="returnToCourses()">Courses</button>
+<mat-toolbar color="primary">
+    <button mat-button (click)="returnToCourses()">Courses</button>
+<button mat-button (click)="returnToMyCourses()">My Courses</button>
 @if(userRole=="teacher"){
-<button (click)="addLesson()">Add Lesson</button>
+<button mat-button (click)="addLesson()">Add Lesson</button>
 }
+    </mat-toolbar>
+
 <h2>Lessons</h2>
 @for(lesson of (lessons | async);track lesson.id){
 <div>

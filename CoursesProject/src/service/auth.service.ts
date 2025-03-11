@@ -22,9 +22,14 @@ export class AuthService {private baseUrl = 'http://localhost:3000/api/auth';
     return this.http.post<User>(`${baseUrl}/auth/register`, user).pipe(
       tap((response:any) => {
         console.log("after", response);
+        this.token=response.token
+        this.currentUser.id = response.userId;
+        this.currentUser.role = response.role;
         this.userService.setUser(response);
-        this.currentUser = response;
+        console.log(this.token);
+        console.log(this.currentUser);
         this.loggedInSubject.next(true);
+        
         // if (typeof window !== 'undefined') {
         //   sessionStorage.setItem('token', response.token);
         // }
@@ -37,6 +42,7 @@ export class AuthService {private baseUrl = 'http://localhost:3000/api/auth';
   login(user: Partial<User>): Observable<User> {
     return this.http.post<User>(`${baseUrl}/auth/login`, { email: user.email, password: user.password }).pipe(
         tap((res: any) => {
+          console.log("after",res);
             this.currentUser.id = res.userId;
             this.currentUser.role = res.role;
             this.token = res.token;

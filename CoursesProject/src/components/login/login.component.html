@@ -19,12 +19,12 @@
             @if(form.controls['name'].errors?.['required']){<small>Name is required.</small>}
             @if(form.controls['name'].errors?.['minlength']){<small>Name must be at least 5 characters long.</small>}
         </div>}
-        <label for="role">Name:</label>
-        <input id="role" formControlName="role" type="role">
-        @if(form.controls['role'].invalid && (form.controls['role'].dirty || form.controls['role'].touched)){ <div>
-            @if(form.controls['role'].errors?.['required']){<small>Name is required.</small>}
-            @if(form.controls['role'].errors?.['minlength']){<small>Name must be at least 5 characters long.</small>}
-        </div>}
+        <label for="role">Role:</label>
+        <select id="role" formControlName="role" type="role">
+            select role
+            <option value="student" selected>Student</option>
+            <option value="teacher">Teacher</option>
+        </select>
     }
     <button type="submit" [disabled]="form.invalid">
         {{isRegister?'register':'login'}}
