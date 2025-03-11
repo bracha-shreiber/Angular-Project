@@ -50,16 +50,15 @@
 
             <div class="button-container">
                 @if(!isEnroll(course.id)){
-                    <button mat-raised-button style="background-color: #3a59be; color: white;" (click)="enroll(course.id)">Enroll</button>
-                    <button mat-raised-button style="background-color: #a6b1e1; color: black;" (click)="showLessons(course.id)">Show Lessons</button>
+                    <button mat-raised-button style="background-color: #4d50ff; color: white;" (click)="enroll(course.id)">Enroll</button>
                 }
                 @else{
-                    <button mat-raised-button style="background-color: #4d50ff; color: white;" (click)="unenroll(course.id)">Leave</button>
-                    <button mat-raised-button style="background-color: #a6b1e1; color: black;" (click)="showLessons(course.id)">Show Lessons</button>
+                    <button mat-raised-button style="background-color: #3a59be; color: white;" (click)="unenroll(course.id)">Leave</button>
                 }
+                <button mat-raised-button style="background-color: #3a59be; color: white;" (click)="showLessons(course.id)">Show Lessons</button>
                 @if(userRole=="teacher"){
-                    <button mat-button style="background-color: #a6b1e1; color: white;" (click)="editCourse(course.id)">Edit</button>
-                    <button mat-button style="background-color: #a6b1e1; color: white;" (click)="deleteCourse(course.id)">Delete</button>
+                    <button mat-button style="background-color: #3a59be; color: white;" (click)="editCourse(course.id)">Edit</button>
+                    <button mat-button style="background-color: #3a59be; color: white;" (click)="deleteCourse(course.id)">Delete</button>
                 }
             </div>
         </div>

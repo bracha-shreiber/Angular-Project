@@ -80,10 +80,10 @@
     }
 
     <div class="button-container">
-        <button mat-raised-button type="submit" [disabled]="form.invalid">
+        <button mat-raised-button type="submit" [disabled]="form.invalid" style="background-color: #3a59be; color: white;">
             {{isRegister?'register':'login'}}
         </button>
-        <button mat-button type="button" [disabled]="form.invalid" (click)="toggleRegister()">
+        <button mat-button type="button" [disabled]="form.invalid" (click)="toggleRegister()" >
             {{isRegister? 'Already have an account? login':'Don\'t have an account? register'}}
         </button>
     </div>

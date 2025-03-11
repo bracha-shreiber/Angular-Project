@@ -34,9 +34,9 @@
                         <button (click)="showLessons(course.id)">Show Lessons</button>
                     }
                     @if(userRole=="teacher"){
-                        <button mat-button (click)="showLessons(course.id)">show lessons</button>
-                        <button mat-button (click)="editCourse(course.id)">edit</button>
-                        <button mat-button (click)="deleteCourse(course.id)">delete</button>
+                        <button mat-button (click)="showLessons(course.id)" style="background-color: #3a59be; color: white;">show lessons</button>
+                        <button mat-button (click)="editCourse(course.id)" style="background-color: #3a59be; color: white;">edit</button>
+                        <button mat-button (click)="deleteCourse(course.id)" style="background-color: #3a59be; color: white;">delete</button>
                     }
                 </div>
             </div>
