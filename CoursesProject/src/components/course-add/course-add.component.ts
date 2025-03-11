@@ -49,8 +49,8 @@ this.courseService.updateCourse(courseId,course);
 this.courseService.getCourses()
   }
   else{
-    this.courseService.addCourse(course);
-    this.courseService.getCourses()
+    this.courseService.addCourse(course).subscribe(()=>this.courseService.getCourses());
+    
   }
   this.router.navigate(['/courses']);
 }

@@ -28,12 +28,14 @@ export class CoursesComponent implements OnInit {
     this.courses = this.coursesService.course$
     this.userRole = this.authService.currentUser.role;
     this.coursesService.getCoursesByUserId(this.authService.currentUser.id).subscribe(
-      { next: (courses)=>{
-        this.studentCourses = courses;
-      },
-      error:(error)=>{
-        console.error('Error fetching courses by userId',error);
-      }}
+      {
+        next: (courses) => {
+          this.studentCourses = courses;
+        },
+        error: (error) => {
+          console.error('Error fetching courses by userId', error);
+        }
+      }
     )
   }
   // loadCourses() {
@@ -53,6 +55,17 @@ export class CoursesComponent implements OnInit {
       next: (response) => {
         console.log("success enroll", response)
         this.coursesService.getCourses();
+        this.coursesService.getCourses();
+        this.coursesService.getCourseById(courseId).subscribe(
+          {
+            next: (course) => {
+              this.studentCourses.push(course)
+            }, error: (error) => {
+              console.error('Error retrieve course ', error)
+            }
+
+          }
+        )
       }, error: (error) => {
         this.errorMessage = "not success to enroll"
       }
@@ -64,6 +77,7 @@ export class CoursesComponent implements OnInit {
       {
         next: (response) => {
           console.log("success leave", response)
+          this.studentCourses = this.studentCourses.filter(course => course.id !== courseId);
           this.coursesService.getCourses()
         }, error: (error) => {
           this.errorMessage = "not success to leave"
@@ -71,12 +85,14 @@ export class CoursesComponent implements OnInit {
       }
     );
   }
-  isEnroll(courseId:number):boolean{
-return this.studentCourses.some(course=>course.id===courseId);
+  isEnroll(courseId: number): boolean {
+    return this.studentCourses.some(course => course.id === courseId);
   }
 
   deleteCourse(courseId: number) {
     this.coursesService.deleteCourse(courseId);
+    this.coursesService.getCourses()
+    this.coursesService.getCourses()
   }
 
   editCourse(courseId: number) {
@@ -84,15 +100,17 @@ return this.studentCourses.some(course=>course.id===courseId);
       (course: Course) => {
         const c = { ...course }
         sessionStorage.setItem('course', JSON.stringify(c));
-        this.router.navigate([`courses/${courseId}/edit`])
+        this.coursesService.getCourses()
+        this.coursesService.getCourses()
+        this.router.navigate([`/courses/${courseId}/edit`])
       }, (error) => {
         this.errorMessage = "not success to edit course"
       }
     )
   }
-showLessons(courseId:number){
-  this.router.navigate([`/courses/${courseId}/lessons`])
-}
+  showLessons(courseId: number) {
+    this.router.navigate([`/courses/${courseId}/lessons`])
+  }
 }
 
 // import { Component, OnInit } from '@angular/core';

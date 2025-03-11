@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LessonAddComponent implements OnInit{
 form!:FormGroup;
 addOrUpdate = false;
-courseId:number=0
+courseId:number=0;
 
 constructor(private fb:FormBuilder,
   private lessonsService:LessonService,
@@ -35,7 +35,10 @@ constructor(private fb:FormBuilder,
           this.courseId = parseInt(params.get('courseId') || '');}})
     }
     else{
-      this.form.patchValue({title:'',description:''});
+      this.form.patchValue({title:'',content:''});
+      this.route.paramMap.subscribe(params => {
+        if (params.has('courseId')) {
+          this.courseId = parseInt(params.get('courseId') || '');}})
     }
   }
 
@@ -48,10 +51,13 @@ onSubmit() {
   
   let lessonId = +this.route.snapshot.paramMap.get('lessonId')!;
   if(this.addOrUpdate){
-this.lessonsService.updateLessonById(this.courseId,lessonId,lesson);
+this.lessonsService.updateLessonById(this.courseId,lessonId,lesson).subscribe(
+  ()=>this.lessonsService.getLessonsByCourseId(this.courseId)
+);
   }
   else{
-    this.lessonsService.addLessonInCourse(lesson.title,lesson.content,lesson.courseId);
+    this.lessonsService.addLessonInCourse(lesson.title,lesson.content,lesson.courseId).subscribe(
+      ()=>this.lessonsService.getLessonsByCourseId(this.courseId));
   }
   this.router.navigate([`/courses/${this.courseId}/lessons`]);
 }

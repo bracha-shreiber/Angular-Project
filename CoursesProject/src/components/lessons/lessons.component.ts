@@ -32,14 +32,14 @@ export class LessonsComponent implements OnInit {
     }
   }
   addLesson() {
-    this.router.navigate(['lessons/newLesson']);
+    this.router.navigate([`courses/${this.courseId}/lessons/newLesson`]);
   }
   editLesson(lessonId: number) {
     const lesson = this.lessonsService.getLessonById(this.courseId, lessonId).subscribe(
       (lesson: Lesson) => {
         const l = { ...lesson }
         sessionStorage.setItem('lesson', JSON.stringify(l));
-        this.router.navigate([`courses/lessons/${lessonId}/edit`])
+        this.router.navigate([`courses/${this.courseId}/lessons/${lessonId}/edit`])
       }, (error) => {
         console.error("not success to edit lesson", error);
       }
@@ -47,7 +47,12 @@ export class LessonsComponent implements OnInit {
   }
   deleteLesson(lessonId: number) {
     if(this.courseId!=undefined){
-    this.lessonsService.deleteLessonById(this.courseId, lessonId);}
+    this.lessonsService.deleteLessonById(this.courseId, lessonId).subscribe(
+      ()=>this.lessonsService.getLessonsByCourseId(this.courseId)
+    );}
     else console.error("courseId is undefined");
+  }
+  returnToCourses(){
+    this.router.navigate(['courses'])
   }
 }

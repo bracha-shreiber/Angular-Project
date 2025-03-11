@@ -69,6 +69,53 @@ export class CourseService {
       courses => this.courseSubject.next(courses)
     );
   }
+  // getCourseById(courseId: number){
+  //   this.http.get<Course>(`${baseUrl}/courses/${courseId}`).pipe(
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+  // getCoursesByUserId(userId: number): Observable<Course[]> {
+  //   return this.http.get<Course[]>(`${baseUrl}/courses/student/${userId}`).pipe(
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+  // addCourse(course: Partial<Course>){
+  //   this.http.post<Course>(`${baseUrl}/courses`, course).subscribe(
+  //     ()=>this.getCourses()
+  //   )
+  // }
+
+  // updateCourse(id: number, course: Partial<Course>){
+  //   this.http.put<Course>(`${baseUrl}/courses/${id}`, course).subscribe(()=>this.getCourses())
+  // }
+
+  // deleteCourse(id: number): Observable<void> {
+  //   return this.http.delete<void>(`${baseUrl}/courses/${id}`).pipe(
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+  // addStudentToCourse(courseId: number, userId: number): Observable<void> {
+  //   return this.http.post<void>(`${baseUrl}/courses/${courseId}/enroll`, { userId }).pipe(
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+  // deleteStudentFromCourse(courseId: number, userId: number): Observable<void> {
+  //   return this.http.delete<void>(`${baseUrl}/courses/${courseId}/unenroll`, {
+  //     body: { userId }
+  //   }).pipe(
+  //     catchError(this.handleError)
+  //   );
+  // }
+
+  // private handleError(error: any) {
+  //   console.error('An error occurred', error); // Log the error to the console
+  //   return throwError('Something went wrong; please try again later.');
+  // }
+
 
   getCourseById(courseId: number): Observable<Course> {
     return this.http.get<Course>(`${baseUrl}/courses/${courseId}`).pipe(
@@ -83,6 +130,7 @@ export class CourseService {
   }
 
   addCourse(course: Partial<Course>): Observable<Course> {
+    debugger
     return this.http.post<Course>(`${baseUrl}/courses`, course).pipe(
       catchError(this.handleError)
     );
