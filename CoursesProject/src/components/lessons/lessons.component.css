@@ -1,0 +1,23 @@
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* מרכז את התוכן */
+    margin-top: 20px; /* מרווח מעל התוכן */
+}
+
+.lesson-item {
+    margin: 10px; /* מרווח בין פריטי השיעור */
+    padding: 16px; /* ריפוד פנימי */
+    border: 1px solid #ccc; /* גבול סביב פריט השיעור */
+    border-radius: 8px; /* פינות מעוגלות */
+    width: 100%; /* רוחב 100% של ההורה */
+    max-width: 400px; /* רוחב מקסימלי קטן יותר */
+    text-align: left; /* טקסט מיושר לשמאל */
+}
+
+
+.button-container {
+    display: flex; /* מציב את הכפתורים בשורה */
+    justify-content: space-between; /* מרווח שווה בין הכפתורים */
+    margin-top: 10px; /* מרווח מעל הכפתורים */
+}

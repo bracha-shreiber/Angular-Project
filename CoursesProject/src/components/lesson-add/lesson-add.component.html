@@ -1,4 +1,4 @@
-
+<!-- 
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <label for="title">Title:</label>
     <input id="title" formControlName="title">
@@ -14,6 +14,28 @@
     </div>}
     
     <button type="submit" [disabled]="form.invalid">
+        Send
+    </button>
+</form> -->
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="centered-form">
+    <mat-form-field appearance="fill">
+        <mat-label>Title:</mat-label>
+        <input matInput id="title" formControlName="title">
+        @if(form.controls['title'].invalid && (form.controls['title'].dirty || form.controls['title'].touched)){<div>
+            @if(form.controls['title'].errors?.['required']){<small>Email is required.</small>}
+            @if(form.controls['title'].errors?.['title']){<small>Invalid email format.</small>}
+        </div>}
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Content:</mat-label>
+        <input matInput id="content" formControlName="content" type="content">
+        @if(form.controls['content'].invalid && (form.controls['content'].dirty || form.controls['content'].touched)){ <div>
+            @if(form.controls['content'].errors?.['required']){<small>Description is required.</small>}
+        </div>}
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid" class="submit-button">
         Send
     </button>
 </form>

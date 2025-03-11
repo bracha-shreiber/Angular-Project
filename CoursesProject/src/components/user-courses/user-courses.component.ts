@@ -34,7 +34,7 @@ this.coursesService.getCoursesByUserId(this.userId).subscribe(
   }
 
   deleteCourse(courseId: number) {
-    this.coursesService.deleteCourse(courseId);
+    this.coursesService.deleteCourse(courseId)
     this.coursesService.getCoursesByUserId(this.userId).subscribe(
       (data)=>{this.myCourses=data}
     )
@@ -64,4 +64,5 @@ this.coursesService.getCoursesByUserId(this.userId).subscribe(
   ToCourses(){
     this.router.navigate(['courses'])
   }
+  
 }

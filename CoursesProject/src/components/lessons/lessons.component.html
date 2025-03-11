@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<!-- <mat-toolbar color="primary">
     <button mat-button (click)="returnToCourses()">Courses</button>
 <button mat-button (click)="returnToMyCourses()">My Courses</button>
 @if(userRole=="teacher"){
@@ -17,4 +17,28 @@
     <button (click)="deleteLesson(lesson.id)">delete</button>
     }
 </div>
-}
+} -->
+<mat-toolbar color="primary">
+    <button mat-button (click)="returnToCourses()">Courses</button>
+    <button mat-button (click)="returnToMyCourses()">My Courses</button>
+    @if(userRole=="teacher"){
+        <button mat-button (click)="addLesson()">Add Lesson</button>
+    }
+</mat-toolbar>
+
+<div class="centered-container">
+    <h2>Lessons</h2>
+    @for(lesson of (lessons | async); track lesson.id){
+        <div class="lesson-item">
+            <h3>{{lesson.title}}</h3>
+            <p>{{lesson.content }}</p>
+
+            @if(userRole=="teacher"){
+                <div class="button-container">
+                    <button mat-button (click)="editLesson(lesson.id)">Edit</button>
+                    <button mat-button (click)="deleteLesson(lesson.id)">Delete</button>
+                </div>
+            }
+        </div>
+    }
+</div>

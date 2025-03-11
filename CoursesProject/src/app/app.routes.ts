@@ -11,12 +11,12 @@ import { UserCoursesComponent } from '../components/user-courses/user-courses.co
 export const routes: Routes = [
     { path: "", component: MenuComponent },
     { path: "login", component: LoginComponent },
-    { path: "courses", component: CoursesComponent },
-    {path:"courses/myCourses",component:UserCoursesComponent},
-    { path: "courses/newCourse", component: CourseAddComponent },
-    { path: "courses/:courseId/edit", component: CourseAddComponent },
+    { path: "courses", component: CoursesComponent, canActivate:[authGuardGuard] },
+    {path:"courses/myCourses",component:UserCoursesComponent, canActivate:[authGuardGuard]},
+    { path: "courses/newCourse", component: CourseAddComponent, canActivate:[authGuardGuard] },
+    { path: "courses/:courseId/edit", component: CourseAddComponent , canActivate:[authGuardGuard]},
     { path: "courses/:courseId/lessons", component: LessonsComponent, canActivate: [authGuardGuard] },
-    {path:"courses/:courseId/lessons/newLesson",component:LessonAddComponent},
-    {path:"courses/:courseId/lessons/:lessonId/edit",component:LessonAddComponent}
+    {path:"courses/:courseId/lessons/newLesson",component:LessonAddComponent, canActivate:[authGuardGuard]},
+    {path:"courses/:courseId/lessons/:lessonId/edit",component:LessonAddComponent, canActivate:[authGuardGuard]}
 
 ];

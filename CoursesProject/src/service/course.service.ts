@@ -141,10 +141,10 @@ export class CourseService {
     );
   }
 
-  deleteCourse(id: number): Observable<void> {
-    return this.http.delete<void>(`${baseUrl}/courses/${id}`).pipe(
-      catchError(this.handleError)
-    );
+  deleteCourse(id: number){
+    this.http.delete<void>(`${baseUrl}/courses/${id}`).subscribe(
+      ()=>{this.getCourses()}
+    )
   }
 
   addStudentToCourse(courseId: number, userId: number): Observable<void> {

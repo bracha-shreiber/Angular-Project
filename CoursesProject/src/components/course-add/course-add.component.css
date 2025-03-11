@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* צבע הרקע של הדף */
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* גובה של 100% מהדף */
+    background-color: #ffffff; /* צבע הרקע של הטופס */
+    padding: 20px;
+    border-radius: 8px; /* פינות מעוגלות */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* צל */
+}
+
+.form-field {
+    width: 100%; /* מאפשר לטופס למלא את רוחב השדה */
+    max-width: 400px; /* מקסימום רוחב לטופס */
+}
+
+.button-container {
+    text-align: center; /* מרכז את הכפתור */
+    margin-top: 20px; /* רווח מעל הכפתור */
+}

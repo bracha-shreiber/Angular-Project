@@ -1,0 +1,21 @@
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* מרכז את התוכן */
+    margin: 20px; /* מרווח סביב התוכן */
+}
+
+.course-container {
+    margin: 20px; /* מרווח סביב כל קורס */
+    padding: 15px; /* ריפוד פנימי */
+    border: 1px solid #ccc; /* גבול מסביב לכל קורס */
+    border-radius: 8px; /* פינות מעוגלות */
+    background-color: #f9f9f9; /* צבע רקע לקורס */
+    width: 400px;
+}
+
+.button-container {
+    display: flex; /* מציב את הכפתורים בשורה */
+    justify-content: space-between; /* מרווח בין הכפתורים */
+    margin-top: 10px; /* מרווח מעל כפתורים */
+}

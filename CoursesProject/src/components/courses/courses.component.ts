@@ -91,9 +91,7 @@ export class CoursesComponent implements OnInit {
   }
 
   deleteCourse(courseId: number) {
-    this.coursesService.deleteCourse(courseId).subscribe(
-      ()=>{this.coursesService.getCourses()}
-    );
+    this.coursesService.deleteCourse(courseId)
     this.coursesService.getCourses()
     this.coursesService.getCourses()
   }

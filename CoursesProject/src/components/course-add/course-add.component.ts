@@ -4,11 +4,13 @@ import { title } from 'process';
 import { CourseService } from '../../service/course.service';
 import { AuthService } from '../../service/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-course-add',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,MatInputModule, MatFormFieldModule, MatButtonModule],
   templateUrl: './course-add.component.html',
   styleUrl: './course-add.component.css'
 })

@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<!-- <mat-toolbar color="primary">
 <button mat-button (click)="signOut()">Sign Out</button>
 <button mat-button (click)="ToMyCourses()">My Courses</button>
 </mat-toolbar>
@@ -11,8 +11,8 @@
 }
 @for(course of (courses | async);track course.id){
 <div>
-    <h3>{{course.title}}</h3>
-    <p>{{course.description }}</p>
+    <h3>Title: {{course.title}}</h3>
+    <p>Description: {{course.description }}</p>
 
     @if(!isEnroll(course.id)){
     <button (click)="enroll(course.id)">Enroll</button>
@@ -27,4 +27,41 @@
     <button (click)="deleteCourse(course.id)">delete</button>
     }
 </div>
+} -->
+<mat-toolbar color="primary">
+    <button mat-button (click)="ToMyCourses()">My Courses</button>
+    @if(userRole=="teacher"){
+        <button mat-button (click)="addCourse()">Add Course</button>
+    }
+    <button mat-button (click)="signOut()">Sign Out</button>
+</mat-toolbar>
+
+<h2>Courses</h2>
+
+@if(errorMessage){
+    <div class="error-message">{{ errorMessage }}</div>
 }
+
+<div class="course-container">
+    @for(course of (courses | async); track course.id){
+        <div class="course-item">
+            <h3>Title: {{course.title}}</h3>
+            <p>Description: {{course.description }}</p>
+
+            <div class="button-container">
+                @if(!isEnroll(course.id)){
+                    <button mat-raised-button style="background-color: #3a59be; color: white;" (click)="enroll(course.id)">Enroll</button>
+                    <button mat-raised-button style="background-color: #a6b1e1; color: black;" (click)="showLessons(course.id)">Show Lessons</button>
+                }
+                @else{
+                    <button mat-raised-button style="background-color: #4d50ff; color: white;" (click)="unenroll(course.id)">Leave</button>
+                    <button mat-raised-button style="background-color: #a6b1e1; color: black;" (click)="showLessons(course.id)">Show Lessons</button>
+                }
+                @if(userRole=="teacher"){
+                    <button mat-button style="background-color: #a6b1e1; color: white;" (click)="editCourse(course.id)">Edit</button>
+                    <button mat-button style="background-color: #a6b1e1; color: white;" (click)="deleteCourse(course.id)">Delete</button>
+                }
+            </div>
+        </div>
+    }
+</div>

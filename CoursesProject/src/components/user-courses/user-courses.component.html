@@ -1,10 +1,7 @@
-<mat-toolbar color="primary">
+<!-- <mat-toolbar color="primary">
     <button mat-button (click)="signOut()">Sign Out</button>
     <button mat-button (click)="ToCourses()">Courses</button>
     </mat-toolbar>
-<!-- @if(userRole=="teacher"){
-    <button (click)="addCourse()">Add Course</button>
-    } -->
     <h2>My Courses</h2>
     @for(course of myCourses;track course.id){
     <div>
@@ -20,4 +17,29 @@
         <button (click)="deleteCourse(course.id)">delete</button>
         }
     </div>
-    }
+    } -->
+    <mat-toolbar color="primary">
+        <button mat-button (click)="ToCourses()">Courses</button>
+        <button mat-button (click)="signOut()">Sign Out</button>
+    </mat-toolbar>
+    <div class="centered-container">
+        
+        <h2>My Courses</h2>
+        @for(course of myCourses;track course.id){
+            <div class="course-container">
+                <h3>Title: {{course.title}}</h3>
+                <p>Description: {{course.description }}</p>
+                <div class="button-container">
+                    @if(!isEnroll(course.id)){
+                        <button (click)="showLessons(course.id)">Show Lessons</button>
+                    }
+                    @if(userRole=="teacher"){
+                        <button mat-button (click)="showLessons(course.id)">show lessons</button>
+                        <button mat-button (click)="editCourse(course.id)">edit</button>
+                        <button mat-button (click)="deleteCourse(course.id)">delete</button>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+    

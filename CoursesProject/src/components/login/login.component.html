@@ -1,3 +1,4 @@
+<!-- continue style that
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <label for="email">Email:</label>
     <input id="email" formControlName="email">
@@ -13,18 +14,19 @@
         @if(form.controls['password'].errors?.['minlength']){<small>Password must be at least 5 characters long.</small>}
     </div>}
     @if(isRegister){
-        <label for="name">Name:</label>
+        <mat-label for="name">Name:</mat-label>
         <input id="name" formControlName="name" type="name">
         @if(form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)){ <div>
             @if(form.controls['name'].errors?.['required']){<small>Name is required.</small>}
             @if(form.controls['name'].errors?.['minlength']){<small>Name must be at least 5 characters long.</small>}
         </div>}
-        <label for="role">Role:</label>
-        <select id="role" formControlName="role" type="role">
-            select role
-            <option value="student" selected>Student</option>
-            <option value="teacher">Teacher</option>
-        </select>
+        <mat-label for="role">Role:</mat-label>
+        <mat-form-field appearance="fill">
+        <mat-select id="role" formControlName="role" type="role">
+            <mat-option value="student" selected>Student</mat-option>
+            <mat-option value="teacher">Teacher</mat-option>
+        </mat-select>
+    </mat-form-field>
     }
     <button type="submit" [disabled]="form.invalid">
         {{isRegister?'register':'login'}}
@@ -34,3 +36,55 @@
     </button>
 </form>
 
+ -->
+ <mat-toolbar color="primary">
+          <a mat-button routerLink="" routerLinkActive="buttonactive">Home</a>
+        </mat-toolbar>
+
+ <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field class="form-field" appearance="fill">
+        <label for="email">Email:</label>
+        <input matInput id="email" formControlName="email">
+        @if(form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)){<div>
+            @if(form.controls['email'].errors?.['required']){<mat-error>Email is required.</mat-error>}
+            @if(form.controls['email'].errors?.['email']){<mat-error>Invalid email format.</mat-error>}
+        </div>}
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="fill">
+        <label for="password">Password:</label>
+        <input matInput id="password" formControlName="password" type="password">
+        @if(form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)){<div>
+            @if(form.controls['password'].errors?.['required']){<mat-error>Password is required.</mat-error>}
+            @if(form.controls['password'].errors?.['minlength']){<mat-error>Password must be at least 5 characters long.</mat-error>}
+        </div>}
+    </mat-form-field>
+
+    @if(isRegister){
+        <mat-form-field class="form-field" appearance="fill">
+            <mat-label for="name">Name:</mat-label>
+            <input matInput id="name" formControlName="name" type="text">
+            @if(form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)){<div>
+                @if(form.controls['name'].errors?.['required']){<mat-error>Name is required.</mat-error>}
+                @if(form.controls['name'].errors?.['minlength']){<mat-error>Name must be at least 5 characters long.</mat-error>}
+            </div>}
+        </mat-form-field>
+
+        <mat-form-field class="form-field" appearance="fill">
+            <mat-label for="role">Role:</mat-label>
+            <mat-select id="role" formControlName="role">
+                <mat-option value="student" selected>Student</mat-option>
+                <mat-option value="teacher">Teacher</mat-option>
+            </mat-select>
+        </mat-form-field>
+    }
+
+    <div class="button-container">
+        <button mat-raised-button type="submit" [disabled]="form.invalid">
+            {{isRegister?'register':'login'}}
+        </button>
+        <button mat-button type="button" [disabled]="form.invalid" (click)="toggleRegister()">
+            {{isRegister? 'Already have an account? login':'Don\'t have an account? register'}}
+        </button>
+    </div>
+</form>
