@@ -3,7 +3,6 @@ import { Course } from '../../models/courseType';
 import { CourseService } from '../../service/course.service';
 import { LessonService } from '../../service/lesson.service';
 import { Router, RouterOutlet } from '@angular/router';
-import { error } from 'console';
 import { AuthService } from '../../service/auth.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
@@ -39,15 +38,7 @@ export class CoursesComponent implements OnInit {
       }
     )
   }
-  // loadCourses() {
-  //   this.coursesService.getCourses().subscribe(data => {
-  //     this.courses = data;
-  //   });
-
-  // }
-  // loatLessons(courseId: number) {
-  //   this.lessonsService.getLessonsByCourseId(courseId);
-  //     }
+  
   addCourse() {
     this.router.navigate(["courses/newCourse"])
   }

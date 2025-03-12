@@ -18,5 +18,4 @@ export const routes: Routes = [
     { path: "courses/:courseId/lessons", component: LessonsComponent, canActivate: [authGuardGuard] },
     {path:"courses/:courseId/lessons/newLesson",component:LessonAddComponent, canActivate:[authGuardGuard]},
     {path:"courses/:courseId/lessons/:lessonId/edit",component:LessonAddComponent, canActivate:[authGuardGuard]}
-
 ];

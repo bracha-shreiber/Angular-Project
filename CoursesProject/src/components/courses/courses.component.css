@@ -3,7 +3,6 @@ body {
     font-family: Arial, sans-serif;
 }
 .mat-toolbar {
-    /* background-color: #f0f0f0; */
     position: fixed; /* Fix the toolbar at the top */
     width: 100%; /* Full width */
     z-index: 1000; /* Ensure it stays above other content */

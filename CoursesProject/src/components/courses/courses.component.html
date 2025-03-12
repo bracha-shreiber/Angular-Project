@@ -1,33 +1,4 @@
-<!-- <mat-toolbar color="primary">
-<button mat-button (click)="signOut()">Sign Out</button>
-<button mat-button (click)="ToMyCourses()">My Courses</button>
-</mat-toolbar>
-@if(userRole=="teacher"){
-<button (click)="addCourse()">Add Course</button>
-}
-<h2>Courses</h2>
-@if(errorMessage){
-<div>{{ errorMessage }}</div>
-}
-@for(course of (courses | async);track course.id){
-<div>
-    <h3>Title: {{course.title}}</h3>
-    <p>Description: {{course.description }}</p>
 
-    @if(!isEnroll(course.id)){
-    <button (click)="enroll(course.id)">Enroll</button>
-    <button (click)="showLessons(course.id)">Show Lessons</button>
-    }
-    @else{
-    <button (click)="unenroll(course.id)">Leave</button>
-    <button (click)="showLessons(course.id)">Show Lessons</button>
-    }
-    @if(userRole=="teacher"){
-    <button (click)="editCourse(course.id)">edit</button>
-    <button (click)="deleteCourse(course.id)">delete</button>
-    }
-</div>
-} -->
 <mat-toolbar color="primary">
     <button mat-button (click)="ToMyCourses()">My Courses</button>
     @if(userRole=="teacher"){
