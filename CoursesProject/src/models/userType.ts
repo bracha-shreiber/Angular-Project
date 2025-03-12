@@ -7,5 +7,6 @@ public password:string,
 public id:number,
 public name:string,
 public role: 'student' | 'teacher',
+public courses:Course[]
     ){}
 }
